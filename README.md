@@ -59,11 +59,7 @@ Future: run generation many data version -> load and capture -> increasing amoun
 
 
 
-AI reference:
-- Kimi: https://www.kimi.com/chat/19fa77f7-b842-8452-8000-098a16fc21fe?chat_enter_method=new_chat
-- Claude: https://claude.ai/chat/5e249bd8-1e09-48d0-bdf3-ed2a2d323612
-- Chat GPT: https://chatgpt.com/c/6a684f47-a408-83ec-96b8-2cfc356a238b
-- Gemini: https://gemini.google.com/app/ea8f7a611e2c0ddf?is_sa=1&is_sa=1&android-min-version=301356232&ios-min-version=322.0&campaign_id=bkws&utm_source=sem&utm_medium=paid-media&utm_campaign=bkws&pt=9008&mt=8&ct=p-growth-sem-bkws&gclsrc=aw.ds&gad_source=1&gad_campaignid=22165684207&gbraid=0AAAAApk5Bhl299pKiraqyznxZcohsqg23&gclid=CjwKCAjwwJzPBhBREiwAJfHRnSYYQdtbQE4xMyI14y4F37Ur_kccjkAOOPAWn3GM336Q6T5avZ2jdRoCNSUQAvD_BwE
+
 
 
 Kimi response: The source:
