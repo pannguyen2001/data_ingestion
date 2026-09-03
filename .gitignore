@@ -4,3 +4,5 @@ data
 logs
 reports
 docs/secret.md
+.idea/
+.idx/
