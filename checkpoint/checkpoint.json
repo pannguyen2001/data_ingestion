@@ -9,8 +9,8 @@
         "des_files": [
             "data.parquet"
         ],
-        "start_at": "2026-07-28 18:09:18",
-        "end_at": "2026-07-28 18:09:18",
+        "start_at": "2026-07-31 16:31:18",
+        "end_at": "2026-07-31 16:31:18",
         "duration": 0.0,
         "error": null
     },
@@ -27,9 +27,9 @@
             "created_at": "Datetime(time_unit='us', time_zone='Asia/Ho_Chi_Minh')",
             "updated_at": "Datetime(time_unit='us', time_zone='Asia/Ho_Chi_Minh')"
         },
-        "start_at": "2026-07-28 18:09:17",
-        "end_at": "2026-07-28 18:09:17",
-        "duration": 0.6802,
+        "start_at": "2026-07-31 16:31:17",
+        "end_at": "2026-07-31 16:31:18",
+        "duration": 0.5172,
         "error": null,
         "des_folder": "data/staging/v1"
     },
@@ -46,9 +46,9 @@
             "created_at": "Datetime(time_unit='us', time_zone='Asia/Ho_Chi_Minh')",
             "updated_at": "Datetime(time_unit='us', time_zone='Asia/Ho_Chi_Minh')"
         },
-        "start_at": "2026-07-28 18:09:17",
-        "end_at": "2026-07-28 18:09:18",
-        "duration": 0.2956,
+        "start_at": "2026-07-31 16:31:18",
+        "end_at": "2026-07-31 16:31:18",
+        "duration": 0.1021,
         "error": null,
         "des_folder": "data/staging/v2"
     }
