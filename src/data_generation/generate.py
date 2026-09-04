@@ -9,15 +9,14 @@ Output folder:
 
 import datetime
 import json
-from zoneinfo import ZoneInfo
-
-from dataclasses import dataclass, field, asdict
-from loguru import logger
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from uuid import uuid4
-import polars as pl
-import numpy as np
+from zoneinfo import ZoneInfo
 
+import numpy as np
+import polars as pl
+from loguru import logger
 
 # ==============================
 # Constant
@@ -77,6 +76,21 @@ Path.touch(checkpoint_folder / checkpoint_file_name)
 # Function
 # ==============================
 
+"""
+Business key:
+    id
+
+Mutable columns:
+    name
+    age
+    gender
+    address
+    updated_at
+
+Immutable columns:
+    id
+    created_at
+"""
 
 def generate_origin_data() -> tuple[pl.DataFrame, DataGenerationResult]:
     """
@@ -88,20 +102,20 @@ def generate_origin_data() -> tuple[pl.DataFrame, DataGenerationResult]:
     df: pl.DataFrame = (
         pl.DataFrame(
             {
-                "id": [str(uuid4()) for _ in range(100)],
-                "name": [f"user_{i + 1}" for i in range(100)],
-                "age": np.random.randint(18, 65, size=100),
-                "gender": np.random.choice(GENDER, size=100),
-                "address": [f"address_{i}" for i in range(100)],
+                "id": [str(uuid4()) for _ in range(10)],
+                "name": [f"user_{i + 1}" for i in range(10)],
+                "age": np.random.randint(18, 65, size=10),
+                "gender": np.random.choice(GENDER, size=10),
+                "address": [f"address_{i}" for i in range(10)],
                 "created_at": [
                     datetime.datetime.now(tz=ZoneInfo("Asia/Ho_Chi_Minh"))
                     - datetime.timedelta(days=1)
-                    for i in range(100)
+                    for i in range(10)
                 ],
                 "updated_at": [
                     datetime.datetime.now(tz=ZoneInfo("Asia/Ho_Chi_Minh"))
                     - datetime.timedelta(days=1)
-                    for i in range(100)
+                    for i in range(10)
                 ],
             }
         )
@@ -148,41 +162,34 @@ def generate_new_data(df_origin: pl.DataFrame) -> DataGenerationResult:
     df = df_origin.clone()
 
     # update data
-    df_update_all = df.filter(pl.col("index") <= 10).with_columns(
+    df_update_all = df.filter(pl.col("index") <= 1).with_columns(
         [
             (pl.col("name") + "_change_all").alias("name"),
             (pl.col("age") + 1).alias("age"),
             (pl.col("gender") + "_change_all").alias("gender"),
             (pl.col("address") + "_change_all").alias("address"),
-            (pl.col("created_at") - datetime.timedelta(days=1)).alias("created_at"),
             (pl.col("updated_at") + datetime.timedelta(days=1)).alias("updated_at"),
         ]
     )
 
     df_update_name = df.filter(
-        (pl.col("index") > 10) & (pl.col("index") <= 20)
+        (pl.col("index") > 1) & (pl.col("index") <= 2)
     ).with_columns((pl.col("name") + "_change_name").alias("name"))
 
     df_update_age = df.filter(
-        (pl.col("index") > 20) & (pl.col("index") <= 30)
+        (pl.col("index") > 2) & (pl.col("index") <= 3)
     ).with_columns((pl.col("age") + 2).alias("age"))
 
     df_update_gender = df.filter(
-        (pl.col("index") > 30) & (pl.col("index") <= 40)
+        (pl.col("index") > 3) & (pl.col("index") <= 4)
     ).with_columns((pl.col("gender") + "_change_gender").alias("gender"))
 
     df_update_address = df.filter(
-        (pl.col("index") > 40) & (pl.col("index") <= 50)
+        (pl.col("index") > 4) & (pl.col("index") <= 5)
     ).with_columns((pl.col("address") + "_change_address").alias("address"))
 
-    df_update_created_at = df.filter(
-        (pl.col("index") > 50) & (pl.col("index") <= 60)
-    ).with_columns(
-        (pl.col("created_at") - datetime.timedelta(days=2)).alias("created_at")
-    )
-
     df_update_updated_at = df.filter(
-        (pl.col("index") > 60) & (pl.col("index") <= 70)
+        (pl.col("index") > 5) & (pl.col("index") <= 6)
     ).with_columns(
         (pl.col("updated_at") + datetime.timedelta(days=2)).alias("updated_at")
     )
@@ -192,7 +199,7 @@ def generate_new_data(df_origin: pl.DataFrame) -> DataGenerationResult:
         pl.DataFrame(
             {
                 "id": [str(uuid4()) for _ in range(10)],
-                "name": [f"user_{i + 100}" for i in range(10)],
+                "name": [f"user_{i + 10}" for i in range(10)],
                 "age": np.random.randint(18, 65, size=10),
                 "gender": np.random.choice(GENDER, size=10),
                 "address": [f"address_{i}" for i in range(10)],
@@ -207,11 +214,11 @@ def generate_new_data(df_origin: pl.DataFrame) -> DataGenerationResult:
             }
         )
         .with_row_index()
-        .with_columns((pl.col("index") + 100).alias("index"))
+        .with_columns((pl.col("index") + 10).alias("index"))
     )
 
     # Delete data
-    df = df[71:91]
+    df = df[7:8]
 
     df = pl.concat(
         [
@@ -220,7 +227,6 @@ def generate_new_data(df_origin: pl.DataFrame) -> DataGenerationResult:
             df_update_age,
             df_update_gender,
             df_update_address,
-            df_update_created_at,
             df_update_updated_at,
             df,
             df_new,

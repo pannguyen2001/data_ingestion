@@ -1,55 +1,40 @@
 {
-    "load_data": {
-        "is_first_load": false,
-        "load_folder_path": "./data/staging/v1",
-        "load_files": [
-            "data.parquet"
-        ],
-        "des_folder_path": "./data/raw",
-        "des_files": [
-            "data.parquet"
-        ],
-        "start_at": "2026-07-28 18:09:18",
-        "end_at": "2026-07-28 18:09:18",
-        "duration": 0.0,
-        "error": null
-    },
     "generate_origin_data": {
-        "rows": 100,
+        "rows": 10,
         "column": 8,
         "schema": {
             "index": "UInt32",
             "id": "String",
             "name": "String",
-            "age": "Int64",
+            "age": "Int32",
             "gender": "String",
             "address": "String",
             "created_at": "Datetime(time_unit='us', time_zone='Asia/Ho_Chi_Minh')",
             "updated_at": "Datetime(time_unit='us', time_zone='Asia/Ho_Chi_Minh')"
         },
-        "start_at": "2026-07-28 18:09:17",
-        "end_at": "2026-07-28 18:09:17",
-        "duration": 0.6802,
+        "start_at": "2026-09-04 14:25:48",
+        "end_at": "2026-09-04 14:25:48",
+        "duration": 0.031,
         "error": null,
-        "des_folder": "data/staging/v1"
+        "des_folder": "data\\staging\\v1"
     },
     "generate_new_data": {
-        "rows": 100,
+        "rows": 17,
         "column": 8,
         "schema": {
             "index": "UInt32",
             "id": "String",
             "name": "String",
-            "age": "Int64",
+            "age": "Int32",
             "gender": "String",
             "address": "String",
             "created_at": "Datetime(time_unit='us', time_zone='Asia/Ho_Chi_Minh')",
             "updated_at": "Datetime(time_unit='us', time_zone='Asia/Ho_Chi_Minh')"
         },
-        "start_at": "2026-07-28 18:09:17",
-        "end_at": "2026-07-28 18:09:18",
-        "duration": 0.2956,
+        "start_at": "2026-09-04 14:25:48",
+        "end_at": "2026-09-04 14:25:48",
+        "duration": 0.009,
         "error": null,
-        "des_folder": "data/staging/v2"
+        "des_folder": "data\\staging\\v2"
     }
 }
